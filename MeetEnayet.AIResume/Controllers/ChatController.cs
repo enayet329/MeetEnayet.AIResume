@@ -1,4 +1,5 @@
 ﻿using MeetEnayet.AIResume.Models;
+using MeetEnayet.AIResume.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.SemanticKernel;
@@ -10,19 +11,21 @@ namespace MeetEnayet.AIResume.Controllers
 	[ApiController]
 	public class ChatController : ControllerBase
 	{
-		private readonly Kernel _kernel;
+		private readonly IChatCompletionService _chatService;
+		private readonly EmbeddingService _embedding;
 
-		public ChatController(Kernel kernel)
+		public ChatController(Kernel kernel, EmbeddingService embedding)
 		{
-			_kernel = kernel;
+			_chatService = kernel.GetRequiredService<IChatCompletionService>();
+			_embedding = embedding;
 		}
 
 		[HttpPost]
 		public async Task<ChatResponse> Post([FromBody] ChatRequest request)
 		{
-			var prompt = await _kernel.InvokeAsync<string>("PersonalitySkill", "InjectPersonalityAsync", new() { ["input"] = request.UserMessage });
-			var chatService = _kernel.GetRequiredService<IChatCompletionService>();
-			var response = await chatService.GetChatMessageContentAsync(prompt);
+			var memory = await _embedding.GetRelevantChunksAsync(request.UserMessage);
+			var prompt = $"You are Enayet, a software engineer. Use the following context from your resume to respond with clarity, humility, and a technical tone:\n{memory}\n\nUser: {request.UserMessage}\nEnayetAI:";
+			var response = await _chatService.GetChatMessageContentAsync(prompt);
 			return new ChatResponse { Response = response.Content };
 		}
 	}
