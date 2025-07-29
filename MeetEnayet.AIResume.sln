@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetEnayet.AIResume", "MeetEnayet.AIResume\MeetEnayet.AIResume.csproj", "{EFA4AD8A-76F0-4F4C-95FC-F54157B4FF77}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFA4AD8A-76F0-4F4C-95FC-F54157B4FF77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFA4AD8A-76F0-4F4C-95FC-F54157B4FF77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFA4AD8A-76F0-4F4C-95FC-F54157B4FF77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFA4AD8A-76F0-4F4C-95FC-F54157B4FF77}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {109206F2-6DEB-4DA3-9920-B10161D7B2CA}
+	EndGlobalSection
+EndGlobal
