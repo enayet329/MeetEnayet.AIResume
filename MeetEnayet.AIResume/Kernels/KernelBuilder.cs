@@ -14,6 +14,7 @@ namespace MeetEnayet.AIResume.Kernels
 
 			string apiKey = builder.Configuration["OpenAI:ApiKey"];
 			string modelId = builder.Configuration["OpenAI:Model"];
+			string baseUrl = builder.Configuration["OpenAI:BaseUrl"];
 
 			if (string.IsNullOrWhiteSpace(apiKey) || string.IsNullOrWhiteSpace(modelId))
 				throw new InvalidOperationException("OpenAI:ApiKey or OpenAI:Model is missing in configuration.");
@@ -22,7 +23,7 @@ namespace MeetEnayet.AIResume.Kernels
 				new ApiKeyCredential(apiKey),
 				new OpenAIClientOptions
 				{
-					Endpoint = new Uri("https://openrouter.ai/api/v1")
+					Endpoint = new Uri(baseUrl)
 				});
 
 			kernelBuilder.Services.AddSingleton<IChatCompletionService>(new OpenAIChatCompletionService(

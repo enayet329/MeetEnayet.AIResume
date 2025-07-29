@@ -1,0 +1,10 @@
+{
+  "description": "Injects Enayet's personality from PDF",
+  "parameters": [
+    {
+      "name": "input",
+      "description": "User's message",
+      "defaultValue": ""
+    }
+  ]
+}
