@@ -14,7 +14,6 @@ namespace MeetEnayet.AIResume.Kernels.Skills.PersonalitySkill
 		}
 
 		[KernelFunction]
-
 		[Description("Injects personalized context from PDF")]
 		public async Task<string> InjectPersonalityAsync(string input)
 		{

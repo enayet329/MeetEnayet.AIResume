@@ -11,7 +11,6 @@ namespace MeetEnayet.AIResume.Kernels
 		public static Kernel BuildKernel(WebApplicationBuilder builder)
 		{
 			var kernelBuilder = Kernel.CreateBuilder();
-
 			string apiKey = builder.Configuration["OpenAI:ApiKey"];
 			string modelId = builder.Configuration["OpenAI:Model"];
 			string baseUrl = builder.Configuration["OpenAI:BaseUrl"];
@@ -21,16 +20,9 @@ namespace MeetEnayet.AIResume.Kernels
 
 			var openAIClient = new OpenAIClient(
 				new ApiKeyCredential(apiKey),
-				new OpenAIClientOptions
-				{
-					Endpoint = new Uri(baseUrl)
-				});
+				new OpenAIClientOptions { Endpoint = new Uri(baseUrl) });
 
-			kernelBuilder.Services.AddSingleton<IChatCompletionService>(new OpenAIChatCompletionService(
-				modelId,
-				openAIClient
-			));
-
+			kernelBuilder.Services.AddSingleton<IChatCompletionService>(new OpenAIChatCompletionService(modelId, openAIClient));
 			return kernelBuilder.Build();
 		}
 	}
