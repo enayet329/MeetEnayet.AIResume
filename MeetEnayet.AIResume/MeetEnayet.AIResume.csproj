@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Kernel\Skills\PromptTemplates\" />
     <Folder Include="Prompts\" />
   </ItemGroup>
 
